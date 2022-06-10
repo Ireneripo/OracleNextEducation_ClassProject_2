@@ -26,7 +26,8 @@ for (let i = 0; i < pacientes.length; i++) {
   }
 
   if (pesoEsValido && alturaEsValida) {
-    tdIMC.textContent = calcularIMC(peso, altura);
+    let imc = peso / (altura * altura);
+    tdIMC.textContent = imc.toFixed(2);
   }
 }
 
@@ -59,8 +60,3 @@ for (let i = 0; i < pacientes.length; i++) {
 //     tdIMC.textContent = imc;
 //   }
 // });
-
-function calcularIMC(peso, altura) {
-  let imc = peso / (altura * altura);
-  return imc.toFixed(2);
-}
