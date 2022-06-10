@@ -3,11 +3,14 @@ let tdpeso = paciente.querySelector('.info-peso');
 let peso = tdpeso.textContent;
 let tdaltura = paciente.querySelector('.info-altura');
 let altura = tdaltura.textContent;
-
-console.log(paciente);
-console.log(tdpeso);
-console.log(peso);
-console.log(altura);
-
+let tdIMC = paciente.querySelector('.info-imc');
 let imc = peso / (altura * altura);
-console.log(imc);
+tdIMC.textContent = imc;
+
+if (peso < 0 || peso > 1000) {
+  console.log('Peso incorrecto');
+}
+
+if (altura < 0 || altura > 4.0) {
+  console.log('Altura incorrecta');
+}
