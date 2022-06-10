@@ -15,12 +15,14 @@ for (let i = 0; i < pacientes.length; i++) {
     console.log('Peso incorrecto');
     tdIMC.textContent = 'Peso incorrecto';
     pesoEsValido = false;
+    paciente.classList.add('paciente-incorrecto');
   }
 
   if (altura < 0 || altura > 3.0) {
     console.log('Altura incorrecta');
     tdIMC.textContent = 'Altura incorrecta';
     alturaEsValida = false;
+    paciente.classList.add('paciente-incorrecto');
   }
 
   if (pesoEsValido && alturaEsValida) {
