@@ -5,8 +5,9 @@ botonAdicionar.addEventListener('click', function (event) {
 
   let form = document.querySelector('#form-adicionar');
   let paciente = capturarDatosPaciente(form);
-  let tabla = document.querySelector('#tabla-pacientes');
   let pacienteTr = construirTr(paciente);
+
+  let tabla = document.querySelector('#tabla-pacientes');
   tabla.appendChild(pacienteTr);
   form.reset();
 });
