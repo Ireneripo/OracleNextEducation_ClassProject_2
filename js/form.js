@@ -8,6 +8,7 @@ botonAdicionar.addEventListener('click', function (event) {
   let tabla = document.querySelector('#tabla-pacientes');
   let pacienteTr = construirTr(paciente);
   tabla.appendChild(pacienteTr);
+  form.reset();
 });
 
 //Capturar los datos del formulario
@@ -23,26 +24,22 @@ function capturarDatosPaciente(form) {
   return paciente;
 }
 
+//Crear una fila de la tabla
 function construirTr(paciente) {
   let pacienteTr = document.createElement('tr');
   pacienteTr.classList.add('paciente');
 
-  let nombreTd = construirTd(paciente.nombre, 'info-nombre');
-  let pesoTd = construirTd(paciente.peso, 'info-peso');
-  let alturaTd = construirTd(paciente.altura, 'info-altura');
-  let grasaTd = construirTd(paciente.grasa, 'info-grasa');
-  let imcTd = construirTd(paciente.imc, 'info-imc');
-
   //Agregar los tds al tr y el tr a la tabla
-  pacienteTr.appendChild(nombreTd);
-  pacienteTr.appendChild(pesoTd);
-  pacienteTr.appendChild(alturaTd);
-  pacienteTr.appendChild(grasaTd);
-  pacienteTr.appendChild(imcTd);
+  pacienteTr.appendChild(construirTd(paciente.nombre, 'info-nombre'));
+  pacienteTr.appendChild(construirTd(paciente.peso, 'info-peso'));
+  pacienteTr.appendChild(construirTd(paciente.altura, 'info-altura'));
+  pacienteTr.appendChild(construirTd(paciente.grasa, 'info-grasa'));
+  pacienteTr.appendChild(construirTd(paciente.imc, 'info-imc'));
 
   return pacienteTr;
 }
 
+//Crear un td
 function construirTd(dato, clase) {
   let td = document.createElement('td');
   td.classList.add(clase);
