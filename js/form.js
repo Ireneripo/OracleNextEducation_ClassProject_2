@@ -24,31 +24,14 @@ function capturarDatosPaciente(form) {
 }
 
 function construirTr(paciente) {
-  //Crear los tds y un tr
   let pacienteTr = document.createElement('tr');
   pacienteTr.classList.add('paciente');
 
-  let nombreTd = document.createElement('td');
-  nombreTd.classList.add('info-nombre');
-
-  let pesoTd = document.createElement('td');
-  pesoTd.classList.add('info-peso');
-
-  let alturaTd = document.createElement('td');
-  alturaTd.classList.add('info-altura');
-
-  let grasaTd = document.createElement('td');
-  grasaTd.classList.add('info-grasa');
-
-  let imcTd = document.createElement('td');
-  imcTd.classList.add('info-imc');
-
-  //Asignar los valores a la propiedad textContent
-  nombreTd.textContent = paciente.nombre;
-  alturaTd.textContent = paciente.altura;
-  pesoTd.textContent = paciente.peso;
-  grasaTd.textContent = paciente.grasa;
-  imcTd.textContent = paciente.imc;
+  let nombreTd = construirTd(paciente.nombre, 'info-nombre');
+  let pesoTd = construirTd(paciente.peso, 'info-peso');
+  let alturaTd = construirTd(paciente.altura, 'info-altura');
+  let grasaTd = construirTd(paciente.grasa, 'info-grasa');
+  let imcTd = construirTd(paciente.imc, 'info-imc');
 
   //Agregar los tds al tr y el tr a la tabla
   pacienteTr.appendChild(nombreTd);
@@ -58,4 +41,11 @@ function construirTr(paciente) {
   pacienteTr.appendChild(imcTd);
 
   return pacienteTr;
+}
+
+function construirTd(dato, clase) {
+  let td = document.createElement('td');
+  td.classList.add(clase);
+  td.textContent = dato;
+  return td;
 }
