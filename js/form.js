@@ -5,7 +5,6 @@ botonAdicionar.addEventListener('click', function (event) {
 
   let form = document.querySelector('#form-adicionar');
   let paciente = capturarDatosPaciente(form);
-  let pacienteTr = construirTr(paciente);
 
   let errores = validarPaciente(paciente);
 
@@ -14,13 +13,18 @@ botonAdicionar.addEventListener('click', function (event) {
     return;
   }
 
-  let tabla = document.querySelector('#tabla-pacientes');
-  tabla.appendChild(pacienteTr);
+  adicionarPacienteEnLaTabla(paciente);
   form.reset();
 
   let mensajesErrores = document.querySelector('#mensajes-errores');
   mensajesErrores.innerHTML = '';
 });
+
+function adicionarPacienteEnLaTabla(paciente) {
+  let pacienteTr = construirTr(paciente);
+  let tabla = document.querySelector('#tabla-pacientes');
+  tabla.appendChild(pacienteTr);
+}
 
 // Capturar los datos del formulario
 function capturarDatosPaciente(form) {
@@ -28,7 +32,7 @@ function capturarDatosPaciente(form) {
     nombre: form.nombre.value,
     peso: form.peso.value,
     altura: form.altura.value,
-    grasa: form.grasa.value,
+    gordura: form.gordura.value,
     imc: calcularIMC(form.peso.value, form.altura.value),
   };
 
@@ -44,7 +48,7 @@ function construirTr(paciente) {
   pacienteTr.appendChild(construirTd(paciente.nombre, 'info-nombre'));
   pacienteTr.appendChild(construirTd(paciente.peso, 'info-peso'));
   pacienteTr.appendChild(construirTd(paciente.altura, 'info-altura'));
-  pacienteTr.appendChild(construirTd(paciente.grasa, 'info-grasa'));
+  pacienteTr.appendChild(construirTd(paciente.gordura, 'info-gordura'));
   pacienteTr.appendChild(construirTd(paciente.imc, 'info-imc'));
 
   return pacienteTr;
@@ -74,8 +78,8 @@ function validarPaciente(paciente) {
     errores.push('La altura no puede estar vacía');
   }
 
-  if (paciente.grasa.length === 0) {
-    errores.push('El porcentaje de grasa no puede estar vacío');
+  if (paciente.gordura.length === 0) {
+    errores.push('El porcentaje de gordura no puede estar vacío');
   }
 
   if (!validarPeso(paciente.peso)) {
